@@ -63,7 +63,7 @@ const Main = () => {
             <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
           </div>
           <a
-            href=""
+            href="https://github.com/IbnuRoi"
             className="text-slate-400 hover:text-white flex items-center gap-2 text-sm border-b border-transparent hover:border-cyan-400 pb-1 transition-all"
           >
             Explore on GitHub <ExternalLink size={14} />
