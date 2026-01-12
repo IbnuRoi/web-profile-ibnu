@@ -18,27 +18,26 @@ const Hero = () => {
             <span className="text-cyan-400">Full Stack</span> Engineer
           </h2>
           <p className="text-slate-400 leading-relaxed max-w-lg text-lg">
-            Membangun pengalaman digital yang estetik dan fungsional. Spesialis
-            dalam Next dan React.
+            Crafting visually appealing and functional digital experiences with Next.js and React.
           </p>
 
           <div className="flex gap-4 pt-4">
-            <a href="" className="bg-cyan-500 hover:bg-cyan-600 hover:text-slate-700 text-slate-900 px-8 py-3 rounded-lg font-bold transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-              All Projects
+            <a href="#contactMe" className="bg-cyan-500 hover:bg-cyan-600 hover:text-slate-700 text-slate-900 px-8 py-3 rounded-lg font-bold transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+              Contact Me
             </a>
-            <a href="" className="border border-slate-700 hover:border-slate-500 hover:text-slate-400 px-8 py-3 rounded-lg font-medium transition-all">
+            <a href="" className="hidden border border-slate-700 hover:border-slate-500 hover:text-slate-400 px-8 py-3 rounded-lg font-medium transition-all">
                 Contact Me
             </a>
           </div>
 
           <div className="flex gap-6 pt-2 text-slate-500">
-            <a href="">
+            <a href="https://github.com/IbnuRoi">
                 <Github className="hover:text-white cursor-pointer transition-colors"/>
             </a>
-            <a href="">
+            <a href="https://www.linkedin.com/in/muhammad-ibnu-haudiroihan/">
                 <Linkedin className="hover:text-white cursor-pointer transition-colors"/>
             </a>
-            <a href="">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ibnuroihan123@gmail.com">
                 <Mail className="hover:text-white cursor-pointer transition-colors"/>
             </a>
           </div>
