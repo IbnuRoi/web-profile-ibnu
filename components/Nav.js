@@ -35,7 +35,7 @@ const Nav = ({ homeButton, downloadCv, viewCv }) => {
             Download Resume
           </a>
           <a href="/" className={`flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors ${homeButton}`}>
-            <ArrowLeft size={16}/> Kembali ke Home
+            <ArrowLeft size={16}/> Back to Home
           </a>
         </div>
       </nav>
