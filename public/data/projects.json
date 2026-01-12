@@ -1,0 +1,230 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "name": "QuickMath Website",
+            "projectType": "Web Application",
+            "date": "March 2025",
+            "shortDescription": "An online tutoring platform focused on problem-solving learning, enabling students from elementary to university level to study anytime, anywhere through an intuitive and accessible digital experience.",
+            "description": [
+                {
+                    "id": 1,
+                    "overview": "Students and educators needed a flexible learning platform that supports problem-solving–based learning without being limited by time or location. Existing solutions were often fragmented, less interactive, and not optimized for an intuitive digital learning experience."
+                },
+                {
+                    "id": 2,
+                    "overview": "To address these challenges, the platform was designed to deliver a seamless and user-friendly online learning experience across all devices. By emphasizing accessibility, structured problem-solving, and intuitive navigation, the platform enables learners to focus on understanding concepts more effectively while allowing educators to deliver content efficiently."
+                }
+            ],
+            "img": "/img/bannerProject/banner-project1.png",
+            "textButton": "Discover More",
+            "cardStack": [
+                {
+                    "id": 1,
+                    "nama": "Next.js",
+                    "bgColor": "bg-zinc-500/10",
+                    "textColor": "text-zinc-300"
+                },
+                {
+                    "id": 2,
+                    "nama": "Bootstrap",
+                    "bgColor": "bg-purple-500/10",
+                    "textColor": "text-purple-400"
+                }
+            ],
+            "href": [
+                {
+                    "id": "liveDemo",
+                    "link": "https://quickmath.id/",
+                    "btnText": "Explore Website",
+                    "btnClass": ""
+                },
+                {
+                    "id": "github",
+                    "link": "",
+                    "btnText": "Source Code",
+                    "btnClass": "hidden"
+                }
+            ],
+            "detailStack": [
+                {
+                    "id": 1,
+                    "title": "Frontend",
+                    "stack": [
+                        {
+                            "id": 1,
+                            "name": "Next.js"
+                        },
+                        {
+                            "id": 2,
+                            "name": "React.js"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Tailwind CSS"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Deployment",
+                    "stack": [
+                        {
+                            "id": 1,
+                            "name": "Vercel"
+                        }
+                    ]
+                }
+            ],
+            "keyFeatures": [
+                "Responsive & Mobile-First Interface",
+                "User-Friendly Navigation",
+                "Interactive Learning Components",
+                "Performance-Optimized UI",
+                "Consistent Design System"
+            ],
+            "challenges": [
+                {
+                    "challenge": "One of the challenges I faced was integrating data from the API into the website pages in a reliable and efficient manner.",
+                    "solution": "This was addressed by implementing structured data fetching, proper state management, and error handling to ensure consistent data flow and smooth rendering."
+                }
+            ],
+            "roleInfo": [
+                {
+                    "id": 1,
+                    "title": "Role",
+                    "info": "Frontend Developer"
+                },
+                {
+                    "id": 2,
+                    "title": "Duration",
+                    "info": "3 Months"
+                },
+                {
+                    "id": 3,
+                    "title": "Team",
+                    "info": "Sole Frontend Developer"
+                }
+            ],
+            "nextProject": [
+                {
+                    "title": "Portfolio Website",
+                    "href": "2"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Portfolio Website",
+            "projectType": "Web Application",
+            "date": "Januari 2026",
+            "shortDescription": "A digital showcase serving as a centralized hub for my professional profile, CV, and software development portfolio.",
+            "description": [
+                {
+                    "id": 1,
+                    "overview": "This platform is designed to provide a comprehensive overview of my professional identity as a software developer. Built with performance and user experience in mind, it aggregates my academic background, technical skills, and a downloadable curriculum vitae into one accessible interface, ensuring visitors can efficiently navigate through my qualifications."
+                },
+                {
+                    "id": 2,
+                    "overview": "Beyond acting as a digital resume, this website serves as a practical demonstration of my frontend development capabilities. It features a curated gallery of my projects — complete with case studies and source code — highlighting my problem-solving approach, continuous learning, and readiness to contribute effectively to dynamic development teams."
+                }
+            ],
+            "img": "/img/bannerProject/banner-project2.png",
+            "textButton": "Discover More",
+            "cardStack": [
+                {
+                    "id": 1,
+                    "nama": "Next.js",
+                    "bgColor": "bg-zinc-500/10",
+                    "textColor": "text-zinc-300"
+                },
+                {
+                    "id": 2,
+                    "nama": "Tailwind CSS",
+                    "bgColor": "bg-cyan-500/10",
+                    "textColor": "text-cyan-400"
+                }
+            ],
+            "href": [
+                {
+                    "id": "liveDemo",
+                    "link": "/",
+                    "btnText": "Explore Website",
+                    "btnClass": ""
+                },
+                {
+                    "id": "github",
+                    "link": "https://github.com/IbnuRoi/web-profile-ibnu",
+                    "btnText": "Source Code",
+                    "btnClass": ""
+                }
+            ],
+            "detailStack": [
+                {
+                    "id": 1,
+                    "title": "Frontend",
+                    "stack": [
+                        {
+                            "id": 1,
+                            "name": "Next.js"
+                        },
+                        {
+                            "id": 2,
+                            "name": "React.js"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Tailwind CSS"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Deployment",
+                    "stack": [
+                        {
+                            "id": 1,
+                            "name": "Vercel"
+                        }
+                    ]
+                }
+            ],
+            "keyFeatures": [
+                "Fully Responsive Design",
+                "High-Performance Architecture",
+                "Curated Project Gallery",
+                "Instant CV Access",
+                "Modern & Clean UI"
+            ],
+            "challenges": [
+                {
+                    "challenge": "One of the main challenges was designing a visually engaging interface that maintains intuitive navigation and easy information accessibility.",
+                    "solution": "To address this, I adopted a minimalist design approach using Tailwind CSS, prioritizing clean typography and whitespace to ensure content remains readable and easy to navigate."
+                }
+            ],
+            "roleInfo": [
+                {
+                    "id": 1,
+                    "title": "Role",
+                    "info": "Frontend Developer"
+                },
+                {
+                    "id": 2,
+                    "title": "Duration",
+                    "info": "1 Months"
+                },
+                {
+                    "id": 3,
+                    "title": "Team",
+                    "info": "Sole Frontend Developer"
+                }
+            ],
+            "nextProject": [
+                {
+                    "title": "QuickMath Website",
+                    "href": "1"
+                }
+            ]
+        }
+    ]
+}
