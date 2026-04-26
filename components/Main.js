@@ -1,4 +1,4 @@
-import { Code2, Database, ExternalLink, Terminal } from "lucide-react";
+import { Braces, Code2, Database, ExternalLink, Terminal } from "lucide-react";
 
 import FooterMain from "../components/Footer";
 
@@ -14,12 +14,17 @@ const techStack = [
   {
     icon: <Terminal />,
     name: "Backend",
-    tools: "Javascript, Go, Python",
+    tools: "Node.js & Express.js",
   },
   {
     icon: <Database />,
     name: "Database",
-    tools: "MySQL, PostgreSQL",
+    tools: "MySQL & PostgreSQL",
+  },
+  {
+    icon: <Braces />,
+    name: "Programming Language",
+    tools: "Javascript, Go, Python",
   },
 ];
 
@@ -34,7 +39,7 @@ const Main = () => {
             <h2 className="text-3xl font-bold text-white">Technical Stack</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {techStack.map((item, idx) => (
               <div
                 key={idx}
