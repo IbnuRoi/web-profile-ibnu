@@ -95,7 +95,7 @@ const Main = () => {
                 </div>
                 <div className="absolute inset-0 bg-cyan-900/0 group-hover:bg-cyan-900/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <a
-                    href={`/project-details/${item.id}`}
+                    href={`/projects/${item.id}`}
                     className="bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-cyan-500 px-4 py-2 rounded-full font-bold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all"
                   >
                     {item.textButton}
