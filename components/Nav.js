@@ -31,7 +31,7 @@ const Nav = ({ homeButton, downloadCv, viewCv }) => {
           <a href="/view-cv" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all ${viewCv}`}>
             View My Resume
           </a>
-          <a href="https://drive.google.com/uc?export=download&id=1TVm7tLB5HdydEC7Fb8YsNArWynwj3hsv" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all ${downloadCv}`}>
+          <a href={process.env.CV_DOWNLOAD_URL} className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all ${downloadCv}`}>
             Download Resume
           </a>
           <a href="/" className={`flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors ${homeButton}`}>

@@ -4,7 +4,7 @@ const CvComp = () => {
         <>
             <section className="pt-16 w-full h-screen">
                 <iframe
-                    src="https://drive.google.com/file/d/1YTA025vjlnqg05GxSvupAjHHF7QM63pB/preview"
+                    src={process.env.CV_URL}
                     title="Cv"
                     className="w-full h-full"
                 ></iframe>
