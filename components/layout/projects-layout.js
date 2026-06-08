@@ -39,11 +39,14 @@ const ProjectsMain = () => {
               <div className="skeleton h-4 w-full bg-slate-800"></div>
             </div>
           ))}
-        </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        </div> :
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects?.data?.map((project, idx) => (
             <ProjectCard key={idx} item={project} />
           ))}
-        </div>}
+        </div>
+      }
 
       <div className="flex justify-center items-center mt-10">
         <div className="join">

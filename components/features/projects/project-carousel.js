@@ -40,36 +40,45 @@ const ProjectCarousel = () => {
     handleNext,
     dots,
     maxIndex
-  } = useCarousel(projects?.data?.length)  
+  } = useCarousel(projects?.data?.length)
 
   return (
-    <div className="relative w-full mx-auto px-4" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <>
+      {loading ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="flex flex-col gap-4 w-full">
+          <div className="skeleton h-48 w-full bg-slate-800"></div>
+          <div className="skeleton h-4 w-28 bg-slate-800"></div>
+          <div className="skeleton h-4 w-full bg-slate-800"></div>
+          <div className="skeleton h-4 w-full bg-slate-800"></div>
+        </div>
+      </div> :
+        <div className="relative w-full mx-auto px-4" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 
-      {/* LEFT BUTTON */}
-      <button
-        onClick={handlePrev}
-        disabled={activeIndex === 0}
-        className={`
+          {/* LEFT BUTTON */}
+          <button
+            onClick={handlePrev}
+            disabled={activeIndex === 0}
+            className={`
           hidden lg:flex
-          btn btn-circle absolute -left-5 top-1/2 -translate-y-1/2 z-10
-        bg-slate-800 text-cyan-400
-        hover:bg-cyan-400 hover:text-slate-900
+          btn btn-circle absolute left-1 top-1/2 -translate-y-1/2 z-10
+        bg-cyan-400 text-slate-900
+        hover:bg-slate-200 hover:text-cyan-500
           transition-opacity duration-300
         ${!isHovered
-            ? "opacity-0 pointer-events-none"
-            : activeIndex === 0
-              ? "opacity-30 cursor-not-allowed"
-              : "opacity-100"
-          }
+                ? "opacity-0 pointer-events-none"
+                : activeIndex === 0
+                  ? "opacity-30 cursor-not-allowed"
+                  : "opacity-100"
+              }
         `}
-      >
-        <ChevronLeft size={20} strokeWidth={3} />
-      </button>
+          >
+            <ChevronLeft size={20} strokeWidth={3} />
+          </button>
 
-      {/* CAROUSEL */}
-      <div
-        ref={carouselRef}
-        className={`
+          {/* CAROUSEL */}
+          <div
+            ref={carouselRef}
+            className={`
           carousel carousel-center
           w-full
           space-x-4
@@ -80,59 +89,61 @@ const ProjectCarousel = () => {
           `}
 
 
-      >
-        {projects?.data?.map((project, idx) => (
-          <div
-            key={idx}
-            className={`carousel-item
+          >
+            {projects?.data?.map((project, idx) => (
+              <div
+                key={idx}
+                className={`carousel-item
               relative
               w-full
               md:w-[calc(51%-1rem)]
               lg:w-[calc(33.8%-1rem)]
             `}
-          >
-            <ProjectCard item={project} />
+              >
+                <ProjectCard item={project} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* RIGHT BUTTON */}
-      <button
-        onClick={handleNext}
-        disabled={activeIndex === maxIndex}
-        className={`hidden lg:flex
-          btn btn-circle absolute -right-5 top-1/2 -translate-y-1/2 z-10
-        bg-slate-800 text-cyan-400
-        hover:bg-cyan-400 hover:text-slate-900
+          {/* RIGHT BUTTON */}
+          <button
+            onClick={handleNext}
+            disabled={activeIndex === maxIndex}
+            className={`hidden lg:flex
+          btn btn-circle absolute right-1 top-1/2 -translate-y-1/2 z-10
+        bg-cyan-400 text-slate-900
+        hover:bg-slate-200 hover:text-cyan-500
           transition-opacity duration-300
         ${!isHovered
-            ? "opacity-0 pointer-events-none"
-            : activeIndex === maxIndex
-              ? "opacity-30 cursor-not-allowed"
-              : "opacity-100"
-          }`}
-      >
-        <ChevronRight size={20} strokeWidth={3} />
-      </button>
+                ? "opacity-0 pointer-events-none"
+                : activeIndex === maxIndex
+                  ? "opacity-30 cursor-not-allowed"
+                  : "opacity-100"
+              }`}
+          >
+            <ChevronRight size={20} strokeWidth={3} />
+          </button>
 
-      {/* DOTS */}
-      <div className="mt-6 flex items-center justify-center gap-2">
-        {Array.from({ length: dots }).map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => scrollToItem(idx)}
-            className={`
+          {/* DOTS */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {Array.from({ length: dots }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToItem(idx)}
+                className={`
               h-1.5 rounded-full transition-all duration-300
 
               ${activeIndex === idx
-                ? "bg-cyan-400 w-5"
-                : "bg-slate-600 w-1.5 hover:bg-slate-400"
-              }
+                    ? "bg-cyan-400 w-5"
+                    : "bg-slate-600 w-1.5 hover:bg-slate-400"
+                  }
             `}
-          />
-        ))}
-      </div>
-    </div>
+              />
+            ))}
+          </div>
+        </div>
+      }
+    </>
   );
 };
 

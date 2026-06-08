@@ -25,7 +25,7 @@ const useCarousel = (totalItems) => {
 
   const [config, setConfig] = useState({
     dots: totalItems,
-    maxIndex: totalItems -1
+    maxIndex: totalItems - 1
   })
 
   useEffect(() => {
