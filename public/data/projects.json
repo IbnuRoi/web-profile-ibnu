@@ -73,14 +73,11 @@
                         "name": "Vercel"
                     }
                 ]
-            }
+            },
+            {"category":"frontend","name":"Next.js"},{"category":"frontend","name":"TailwindCSS"},{"category":"frontend","name":"Daisy UI"}
         ],
         "keyFeatures": [
-            "Responsive & Mobile-First Interface",
-            "User-Friendly Navigation",
-            "Interactive Learning Components",
-            "Performance-Optimized UI",
-            "Consistent Design System"
+            "Responsive & Mobile-First Interface", "User-Friendly Navigation", "Interactive Learning Components", "Performance-Optimized UI", "Consistent Design System"
         ],
         "challenges": [
             {
@@ -187,13 +184,10 @@
                     }
                 ]
             }
+            
         ],
         "keyFeatures": [
-            "Fully Responsive Design",
-            "High-Performance Architecture",
-            "Curated Project Gallery",
-            "Instant CV Access",
-            "Modern & Clean UI"
+            "Fully Responsive Design","High-Performance Architecture","Curated Project Gallery","Instant CV Access","Modern & Clean UI"
         ],
         "challenges": [
             {

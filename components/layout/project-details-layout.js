@@ -44,7 +44,9 @@ const ProjectDetailMain = ({ projectId }) => {
   console.log(pagination)
   return (
     <>
-      {loading ? <span className="loading loading-spinner loading-xl"></span> :
+      {loading ? <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div> :
         <>
           {/* Project Hero Section */}
           <header className="pt-32 pb-12 px-6 container mx-auto">
@@ -67,18 +69,22 @@ const ProjectDetailMain = ({ projectId }) => {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href={"/"}
-                  className={`bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20`}
-                >
-                  <ExternalLink /> Live Preview
-                </a>
-                <a
-                  href={'/'}
-                  className={`border border-slate-700 hover:border-slate-500 hover:text-white text-slate-300 px-6 py-3 rounded-lg flex font-medium items-center gap-2 transition-all`}
-                >
-                  <Github /> Source Code
-                </a>
+                {data?.livePreview && (
+                  <a
+                    href={data?.livePreview}
+                    className={`bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20`}
+                  >
+                    <ExternalLink /> Live Preview
+                  </a>
+                )}
+                {data?.sourceCode && (
+                  <a
+                    href={data?.sourceCode}
+                    className={`border border-slate-700 hover:border-slate-500 hover:text-white text-slate-300 px-6 py-3 rounded-lg flex font-medium items-center gap-2 transition-all`}
+                  >
+                    <Github /> Source Code
+                  </a>
+                )}
               </div>
             </div>
           </header >
