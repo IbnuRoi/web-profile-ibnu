@@ -5,7 +5,7 @@ const ProjectDetailLayout = async ({ params }) => {
     const { projectId } = await params;
     return(
         <>
-            <ProjectDetail getParams={projectId}/>
+            <ProjectDetail projectId={projectId}/>
         </>
     )
 }

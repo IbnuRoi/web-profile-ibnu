@@ -1,14 +1,14 @@
 "use client"
 
-import Hero from "@/components/Hero";
-import Main from "@/components/Main";
-import Nav from "@/components/Nav";
+import Hero from "@/components/ui/hero-banner";
+import Main from "@/components/layout/main-layout";
+import Nav from "@/components/common/nav";
 
 
 const LandingPageLayout = () => {
     return(
         <>
-            <Nav homeButton="hidden" downloadCv="hidden"/>
+            <Nav show='hidden'/>
             <Hero/>
             <Main/>
         </>

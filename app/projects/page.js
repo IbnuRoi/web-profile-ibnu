@@ -1,17 +1,7 @@
-"use client"
+import ProjectsLayout from "./(projects)";
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
-const ProjectLayout = ({ params }) => {
-    const router = useRouter();
-    const projectId = params.projectId;
-
-    useEffect(() => {
-        if(projectId === undefined) {
-            router.push("/")
-        }
-    }, []);
+const Projects = () => {
+    return <ProjectsLayout/>
 }
 
-export default ProjectLayout;
+export default Projects;

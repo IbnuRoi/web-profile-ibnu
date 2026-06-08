@@ -1,8 +1,11 @@
 "use client"
 
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import LinkButton from "../ui/link-button";
+import RoundButton from "../ui/round-button";
 
-const Nav = ({ homeButton, downloadCv, viewCv }) => {
+const Nav = ({url, text, show}) => {
   return (
     <>
       <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
@@ -28,15 +31,14 @@ const Nav = ({ homeButton, downloadCv, viewCv }) => {
               </li>
             </ul>
           </div>
-          <a href="/view-cv" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all ${viewCv}`}>
+          {/* <Link href="/view-cv" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all`}>
             View My Resume
-          </a>
-          <a href="https://drive.google.com/uc?export=download&id=1Qe4PMpdlz1ybLM2B_SNDHsvbuO-sO20t" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all ${downloadCv}`}>
+          </Link>
+          <a href="https://drive.google.com/uc?export=download&id=1Qe4PMpdlz1ybLM2B_SNDHsvbuO-sO20t" className={`block px-4 py-2 rounded-full border border-slate-700 text-xs hover:border-cyan-400 hover:text-cyan-400 transition-all`}>
             Download Resume
-          </a>
-          <a href="/" className={`flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors ${homeButton}`}>
-            <ArrowLeft size={16}/> Back to Home
-          </a>
+          </a> */}
+          <RoundButton show={'hidden'} text={'View my Resume'}/>
+          <LinkButton url={url} text={text} show={show}/>
         </div>
       </nav>
     </>

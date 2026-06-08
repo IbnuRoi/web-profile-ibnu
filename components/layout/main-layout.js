@@ -1,9 +1,10 @@
 import { Braces, Code2, Database, ExternalLink, Terminal } from "lucide-react";
 
-import FooterMain from "../components/Footer";
+import FooterMain from "../common/footer";
 
-import ProjectData from "../public/data/projects.json";
 import Image from "next/image";
+import ProjectCard from "../features/projects/project-card";
+import ProjectCarousel from "../features/projects/project-carousel";
 
 const techStack = [
   {
@@ -59,8 +60,8 @@ const Main = () => {
       </section>
 
       {/* Project Section */}
-      <section className="md:py-20 container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+      <section className="pb-20 container mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end px-6 mb-12 gap-4">
           <div>
             <h3 className="text-cyan-400 font-mono text-end md:text-start text-sm mb-2">
               02. PORTFOLIO
@@ -68,62 +69,15 @@ const Main = () => {
             <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
           </div>
           <a
-            href="https://github.com/IbnuRoi"
-            className="text-slate-400 hover:text-white flex items-center gap-2 text-sm border-b border-transparent hover:border-cyan-400 pb-1 transition-all"
+            href="/projects"
+            className="text-cyan-400 lg:text-slate-400 hover:text-white flex items-center gap-2 text-sm md:text-base border-b lg:border-transparent lg:hover:border-cyan-400 pb-1 transition-all"
           >
-            Explore on GitHub <ExternalLink size={14} />
+            Explore Projects <ExternalLink size={16} />
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ProjectData.projects.map((item, idx) => (
-            <div
-              key={idx}
-              className="group rounded-xl overflow-hidden bg-slate-800 border border-slate-700 hover:border-slate-600 hover:shadow-xl transition-all"
-            >
-              <div className="h-48 bg-slate-700 relative overflow-hidden">
-                <div className="absolute inset-0 bg-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                  <span className="text-slate-600 font-bold text-2xl">
-                    Project Preview {item.id}
-                  </span>
-                  <Image
-                    src={item.img}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-cyan-900/0 group-hover:bg-cyan-900/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <a
-                    href={`/projects/${item.id}`}
-                    className="bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-cyan-500 px-4 py-2 rounded-full font-bold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all"
-                  >
-                    {item.textButton}
-                  </a>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex gap-2 mb-4">
-                  {item.cardStack.map((data, idx) => (
-                    <span
-                      key={idx}
-                      className={`px-2 py-1 ${data.bgColor} ${data.textColor} text-xs rounded`}
-                    >
-                      {data.nama}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                  {item.name}
-                </h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  {item.shortDescription}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProjectCarousel/>
+        
       </section>
 
       {/* Contact and Footer */}
