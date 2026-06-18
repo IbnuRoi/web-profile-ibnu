@@ -30,7 +30,7 @@ const ProjectCard = ({ item, idx }) => {
 
             <div className="p-6">
                 <div className="flex gap-2 mb-4">
-                    {item.techStacks.map((stack, idx) => (
+                    {item.techStacks.slice(0, 4).map((stack, idx) => (
                         <span
                             key={idx}
                             className={`px-2 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded`}
