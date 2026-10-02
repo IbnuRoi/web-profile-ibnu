@@ -11,9 +11,9 @@ const Nav = ({url, text, show}) => {
       <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-xl font-mono font-bold bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            <a href="/">
+            <Link href="/">
                 Dev.Portfolio
-            </a>
+            </Link>
           </div>
           <div className="hidden">
             <ul className="hidden md:flex gap-8 text-sm font-medium text-slate-400">

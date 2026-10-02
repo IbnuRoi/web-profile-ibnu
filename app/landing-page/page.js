@@ -1,13 +1,5 @@
-const { default: LandingPageLayout } = require("./(landing-page)")
-import ProjectData from "@/public/data/projects.json";
+import { redirect } from "next/navigation";
 
-
-const LandingPage = async () => {
-    return(
-        <>
-            <LandingPageLayout/>
-        </>
-    )
+export default function LandingPage() {
+  redirect("/");
 }
-
-export default LandingPage;

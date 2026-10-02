@@ -1,6 +1,7 @@
 import { Braces, Code2, Database, ExternalLink, Terminal } from "lucide-react";
 
 import FooterMain from "../common/footer";
+import Link from "next/link";
 
 import Image from "next/image";
 import ProjectCard from "../features/projects/project-card";
@@ -68,12 +69,12 @@ const Main = () => {
             </h3>
             <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
           </div>
-          <a
+          <Link
             href="/projects"
             className="text-cyan-400 lg:text-slate-400 hover:text-white flex items-center gap-2 text-sm md:text-base border-b lg:border-transparent lg:hover:border-cyan-400 pb-1 transition-all"
           >
             Explore Projects <ExternalLink size={16} />
-          </a>
+          </Link>
         </div>
 
         <ProjectCarousel/>

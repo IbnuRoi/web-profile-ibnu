@@ -7,37 +7,35 @@ import {
   Github,
   Layers,
 } from "lucide-react";
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import FooterMain from "../common/footer";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useProjectDetail from "@/public/hooks/useProjectDetail";
+import useProjectDetail from "@/hooks/useProjectDetail";
 
 const ProjectDetailMain = ({ projectId }) => {
-  const [techStack, setTechStack] = useState({})
   const router = useRouter();
   const { project, loading, error } = useProjectDetail(projectId)
 
+  const techStack = useMemo(() => {
+    if (!project?.data?.techStacks) return {};
+    return project.data.techStacks.reduce((acc, tech) => {
+      const category = tech.category;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(tech);
+      return acc;
+    }, {});
+  }, [project]);
+
   useEffect(() => {
-    if (!project) {
+    if (!loading && error) {
       router.push("/projects");
     }
-
-    const groupTechStacks = project?.data?.techStacks?.reduce((acc, tech) => {
-      const category = tech.category
-
-      if (!acc[category]) {
-        acc[category] = []
-      }
-
-      acc[category].push(tech)
-
-      return acc
-    }, {} || {})
-
-    setTechStack(groupTechStacks)
-  }, [project])
+  }, [loading, error, router]);
 
   const data = project?.data
   const pagination = project?.meta
@@ -49,9 +47,9 @@ const ProjectDetailMain = ({ projectId }) => {
       </div> :
         <>
           {/* Project Hero Section */}
-          <header className="pt-32 pb-12 px-6 container mx-auto">
+          <header className="pt-28 sm:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 container mx-auto">
             <div className="max-w-4xl">
-              <div className="flex items-center gap-3 text-cyan-400 font-mono text-sm mb-4">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-cyan-400 font-mono text-xs sm:text-sm mb-4">
                 <span className="px-3 py-1 bg-cyan-950/50 border border-cyan-900 rounded-full">
                   {data?.projectType}
                 </span>
@@ -60,11 +58,11 @@ const ProjectDetailMain = ({ projectId }) => {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4 sm:mb-6 leading-tight break-words">
                 {data?.name}
               </h1>
 
-              <p className="text-xl text-slate-400 leading-relaxed max-w-2xl mb-8">
+              <p className="text-base sm:text-xl text-slate-400 leading-relaxed max-w-2xl mb-6 sm:mb-8">
                 {data?.description?.short}
               </p>
 
@@ -90,7 +88,7 @@ const ProjectDetailMain = ({ projectId }) => {
           </header >
 
           {/* Main Showcase Image */}
-          <section className="container mx-auto px-6 mb-20" >
+          <section className="container mx-auto px-4 sm:px-6 mb-16 sm:mb-20" >
             <div className="w-full aspect-video rounded-2xl bg-slate-800 border border-slate-700 overflow-hidden relative shadow-2xl group">
               {/* Placeholder UI Illustration */}
               <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-slate-800 to-slate-900">
@@ -122,8 +120,8 @@ const ProjectDetailMain = ({ projectId }) => {
           </section >
 
           {/* Content Grid */}
-          <section className="container mx-auto px-6 pb-24" >
-            <div className="grid lg:grid-cols-3 gap-12">
+          <section className="container mx-auto px-4 sm:px-6 pb-24" >
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Left Column: Main Content */}
               <div className="lg:col-span-2 space-y-12">
                 {/* Overview */}
@@ -175,7 +173,7 @@ const ProjectDetailMain = ({ projectId }) => {
               </div>
 
               {/* Right Column: Tech Stack & Info */}
-              <div className="space-y-8 sticky top-24 h-fit">
+              <div className="space-y-8 lg:sticky lg:top-24 h-fit">
                 {/* Tech Stack Card */}
                 <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
                   <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
@@ -223,42 +221,40 @@ const ProjectDetailMain = ({ projectId }) => {
           <div className="divider"></div>
 
           {/* Next Project Nav */}
-          <section className=" bg-slate-900 mt-16" >
+          <section className="bg-slate-900 mt-16" >
             {pagination?.next && (
-              <div className="container mx-auto px-6">
-                <div className="flex justify-between items-center text-slate-500 text-sm mb-4 font-mono">
+              <div className="container mx-auto px-4 sm:px-6">
+                <div className="flex justify-between items-center text-slate-500 text-xs sm:text-sm mb-4 font-mono">
                   <span className="uppercase">Next Project</span>
                   <span>{pagination?.index} / {pagination?.totalProjects}</span>
                 </div>
-                <a href={`/projects/${pagination?.next?.projectId}`} className="group block">
-                  <h2 className="text-3xl md:text-5xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
-                    {pagination?.next?.name}
+                <Link href={`/projects/${pagination?.next?.projectId}`} className="group block">
+                  <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-4">
+                    <span className="break-words">{pagination?.next?.name}</span>
                     <ChevronRight
-                      className="transform group-hover:translate-x-4 transition-transform text-cyan-500"
-                      size={48}
+                      className="shrink-0 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 transform group-hover:translate-x-2 sm:group-hover:translate-x-4 transition-transform text-cyan-500"
                     />
                   </h2>
-                </a>
+                </Link>
               </div>
             )}
             {pagination?.next && pagination?.prev && (
               <div className="divider"></div>
             )}
             {pagination?.prev && (
-              <div className="container mx-auto px-6">
-                <div className={`flex ${!pagination?.next ? 'justify-between' : 'justify-end'} items-center text-slate-500 text-sm mb-4 font-mono`}>
+              <div className="container mx-auto px-4 sm:px-6">
+                <div className={`flex ${!pagination?.next ? 'justify-between' : 'justify-end'} items-center text-slate-500 text-xs sm:text-sm mb-4 font-mono`}>
                   {!pagination?.next && (<span>{pagination?.index} / {pagination?.totalProjects}</span>)}
                   <span className="uppercase">Previous Project</span>
                 </div>
-                <a href={`/projects/${pagination?.prev?.projectId}`} className="group block">
-                  <h2 className="text-3xl md:text-5xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
+                <Link href={`/projects/${pagination?.prev?.projectId}`} className="group block">
+                  <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-4">
                     <ChevronLeft
-                      className="transform group-hover:-translate-x-4 transition-transform text-cyan-500"
-                      size={48}
+                      className="shrink-0 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 transform group-hover:-translate-x-2 sm:group-hover:-translate-x-4 transition-transform text-cyan-500"
                     />
-                    {pagination?.prev?.name}
+                    <span className="break-words text-right">{pagination?.prev?.name}</span>
                   </h2>
-                </a>
+                </Link>
               </div>
             )}
           </section >

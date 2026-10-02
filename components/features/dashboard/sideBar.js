@@ -1,66 +1,142 @@
-"use client"
+"use client";
 
-import { CodeXml, FileText, FolderOpen, LayoutDashboard } from 'lucide-react';
-import { useState } from 'react'
+import {
+  CodeXml,
+  FolderOpen,
+  FolderPlus,
+  LayoutDashboard,
+  LogOut,
+  ExternalLink,
+  X,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-const navItems = [
+export default function SideBarNav({ isOpen = false, onClose }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin_token");
+    localStorage.removeItem("admin_username");
+    document.cookie =
+      "admin_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    router.push("/admin/login");
+  };
+
+  const navItems = [
     {
-        section: 'Feature',
-        items: [
-            { label: 'Dashboard', icon: LayoutDashboard, href: '/admin/dashboard', badge: null },
-            { label: 'Projects', icon: FolderOpen, href: '/admin/dashboard', badge: 8 },
-            { label: 'Curriculum Vitae', icon: FileText, href: '/admin', badge: 3 },
-        ],
+      label: "Dashboard",
+      icon: LayoutDashboard,
+      href: "/admin/dashboard",
+      active: pathname === "/admin/dashboard",
     },
-]
+    {
+      label: "Projects List",
+      icon: FolderOpen,
+      href: "/admin/dashboard/projects",
+      active: pathname === "/admin/dashboard/projects",
+    },
+    {
+      label: "Add Project",
+      icon: FolderPlus,
+      href: "/admin/dashboard/add-project",
+      active: pathname === "/admin/dashboard/add-project",
+    },
+  ];
 
-export default function SideBarNav() {
-    const [collapsed, setCollapsed] = useState(false)
-    const [active, setActive] = useState('Dashboard')
+  return (
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {isOpen && (
+        <div
+          onClick={onClose}
+          className="fixed inset-0 bg-slate-950/80 backdrop-blur-xs z-40 lg:hidden transition-opacity"
+          aria-hidden="true"
+        />
+      )}
 
-    return (
-        <aside className={`flex flex-col h-screen bg-slate-800 border-r border-slate-700 transition-all duration-300 ${collapsed ? 'w-16' : 'w-60'}`}>
-            <div className="flex items-center gap-3 px-4 py-5 border-b border-slate-700 min-h-16">
-                <div className="w-8 h-8 bg-cyan-400 rounded-lg flex items-center justify-center shrink-0">
-                    <CodeXml size={16} className="text-slate-900" />
-                </div>
-                {!collapsed && (
-                    <span className="text-base font-medium text-slate-100 whitespace-nowrap">
-                        DevAdmin
-                    </span>
-                )}
+      {/* Sidebar Drawer */}
+      <aside
+        className={`fixed lg:static inset-y-0 left-0 z-50 flex flex-col h-full bg-slate-900 border-r border-slate-800 w-64 transition-transform duration-300 ease-in-out shrink-0 ${
+          isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
+        {/* Brand Header */}
+        <div className="flex items-center justify-between px-4 py-4 sm:py-5 border-b border-slate-800 min-h-16">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-cyan-400 rounded-lg flex items-center justify-center shrink-0">
+              <CodeXml size={18} className="text-slate-900" />
             </div>
+            <div>
+              <span className="text-base font-bold text-white tracking-wide block">
+                DevAdmin
+              </span>
+              <span className="text-[10px] text-cyan-400 font-mono block">
+                PORTFOLIO CMS
+              </span>
+            </div>
+          </div>
 
-            <nav className="flex-1 overflow-y-auto py-2">
-                {navItems.map(({ section, items }) => (
-                    <div key={section} className="px-2 mb-2">
-                        {!collapsed && (
-                            <p className="text-sm font-medium text-slate-500 uppercase tracking-widest px-2 mb-1">
-                                {section}
-                            </p>
-                        )}
-                        {items.map(({ label, icon: Icon, href, badge }) => (
-                            <a key={label} href={href} onClick={() => setActive(label)} className={`
-                                flex justify-center items-center gap-3 rounded-lg px-3 py-2 mb-0.5 transition-colors
-                                ${collapsed ? 'justify-center px-0' : ''}
-                                ${active === label ? 'bg-cyan-400/50 text-slate-200' : 'text-slate-400 hover:bg-cyan-400/80 hover:text-slate-200'}
-                                `}>
-                                <Icon size={16} className="shrink-0" />
-                                {!collapsed && (
-                                    <>
-                                        <span className="flex-1 text-sm">{label}</span>
-                                        {badge && (
-                                            <span className="text-sm font-medium bg-cyan-900 text-cyan-400 px-2 py-0.5 rounded-full">
-                                                {badge}
-                                            </span>
-                                        )}
-                                    </>
-                                )}
-                            </a>
-                        ))}
-                    </div>
-                ))}
-            </nav>
-        </aside>
-    )
+          {/* Close button for mobile */}
+          <button
+            onClick={onClose}
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg lg:hidden cursor-pointer"
+            aria-label="Close sidebar"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+          <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider px-3 mb-2">
+            Management
+          </p>
+
+          {navItems.map(({ label, icon: Icon, href, active }) => (
+            <Link
+              key={label}
+              href={href}
+              onClick={() => onClose?.()}
+              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all text-sm font-medium ${
+                active
+                  ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                  : "text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+              }`}
+            >
+              <Icon size={18} className="shrink-0" />
+              <span>{label}</span>
+            </Link>
+          ))}
+
+          <div className="pt-4 mt-4 border-t border-slate-800/80">
+            <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider px-3 mb-2">
+              Website
+            </p>
+            <Link
+              href="/"
+              target="_blank"
+              onClick={() => onClose?.()}
+              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all"
+            >
+              <ExternalLink size={18} className="shrink-0" />
+              <span>View Live Site</span>
+            </Link>
+          </div>
+        </nav>
+
+        {/* Logout Footer */}
+        <div className="p-3 border-t border-slate-800">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-red-400 hover:bg-red-950/30 hover:text-red-300 transition-all cursor-pointer"
+          >
+            <LogOut size={18} className="shrink-0" />
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </aside>
+    </>
+  );
 }

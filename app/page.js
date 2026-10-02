@@ -1,10 +1,15 @@
-import Image from "next/image";
-import LandingPage from "./landing-page/page";
+"use client";
+
+import Hero from "@/components/ui/hero-banner";
+import Main from "@/components/layout/main-layout";
+import Nav from "@/components/common/nav";
 
 export default function Home() {
   return (
-    <main>
-      <LandingPage/>
+    <main className="min-h-screen bg-slate-900 text-slate-200">
+      <Nav show="hidden" />
+      <Hero />
+      <Main />
     </main>
   );
 }

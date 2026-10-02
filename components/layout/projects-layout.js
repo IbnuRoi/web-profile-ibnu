@@ -1,9 +1,8 @@
 import { ChevronsLeft, ChevronsRight, ExternalLink } from 'lucide-react';
 import { useState, useEffect } from 'react'
 import ProjectCard from '../features/projects/project-card';
-import useLimit from '@/public/hooks/useLimit';
-import API from '@/public/config/axios';
-import useProjects from '@/public/hooks/useProjects';
+import useLimit from '@/hooks/useLimit';
+import useProjects from '@/hooks/useProjects';
 
 const ProjectsMain = () => {
   const [page, setPage] = useState(1)

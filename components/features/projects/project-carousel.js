@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectCard from "./project-card";
-import useCarousel from "@/public/hooks/useCarousel";
-import API from "@/public/config/axios";
+import useCarousel from "@/hooks/useCarousel";
+import API from "@/lib/axios";
 
 
 const ProjectCarousel = () => {
